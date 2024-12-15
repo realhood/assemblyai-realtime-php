@@ -139,4 +139,4 @@ The MIT License (MIT). Please see [License File](LICENSE) for more information.
 
 ## Credits
 
-Created and maintained by [Ali Yasin](https://github.com/realhood).
+Created and maintained by [Reza Aleyasin](https://github.com/realhood).
