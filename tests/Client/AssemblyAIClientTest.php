@@ -33,12 +33,27 @@ class AssemblyAIClientTest extends TestCase
     public function testInvalidApiKey()
     {
         $this->expectException(AssemblyAIException::class);
+        $this->expectExceptionMessage('API key cannot be empty');
         new AssemblyAIClient('');
     }
 
     public function testSendAudioChunkWithoutConnection()
     {
         $this->expectException(AssemblyAIException::class);
+        $this->expectExceptionMessage('No active connection');
         $this->client->sendAudioChunk('test data');
+    }
+
+    public function testClientWithValidConfiguration()
+    {
+        $config = new Configuration([
+            'lemur' => [
+                'enabled' => true,
+                'task' => 'summarize'
+            ]
+        ]);
+        
+        $client = new AssemblyAIClient($this->apiKey, $config);
+        $this->assertInstanceOf(AssemblyAIClient::class, $client);
     }
 }

@@ -20,6 +20,10 @@ class AssemblyAIClient
 
     public function __construct(string $apiKey, Configuration $config = null)
     {
+        if (empty($apiKey)) {
+            throw new AssemblyAIException('API key cannot be empty');
+        }
+
         $this->apiKey = $apiKey;
         $this->config = $config ?? new Configuration();
         $this->httpClient = new HttpClient([
@@ -34,6 +38,10 @@ class AssemblyAIClient
 
     public function startRealTimeTranscription(callable $onMessage, array $lemurConfig = []): void
     {
+        if (empty($this->apiKey)) {
+            throw new AssemblyAIException('API key cannot be empty');
+        }
+
         $this->loop = \React\EventLoop\Factory::create();
         
         $connection = new \Ratchet\Client\Connector($this->loop);
