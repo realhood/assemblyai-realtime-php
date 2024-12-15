@@ -1,0 +1,14 @@
+vendor/
+composer.lock
+.phpunit.result.cache
+.php_cs.cache
+.phpcs-cache
+.idea/
+.vscode/
+*.cache
+*.log
+coverage/
+.DS_Store
+tests/fixtures/*.wav
+tests/fixtures/*.mp3
+tests/fixtures/*.m4a
